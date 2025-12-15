@@ -1,0 +1,35 @@
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+terraform/tfplan
+
+# Ansible
+ansible/inventory/tf_output.json
+ansible/*.retry
+
+# Apps
+apps/*/.env
+apps/*/*.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Secrets
+**/.env.local
+**/.env
+**/secrets/
+**/*.key
+**/*.pem
