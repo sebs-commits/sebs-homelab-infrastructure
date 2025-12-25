@@ -1,0 +1,33 @@
+proxmox_endpoint = "https://192.168.1.10:8006/api2/json"
+proxmox_api_token = "sebdavid@pam!terraform=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ssh_public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI..."
+
+# Default VM password
+default_password = "ultrasecurepasswordgoeshere123"
+
+vms = {
+  "immich" = {
+    vmid       = 120
+    cores      = 4
+    memory     = 8192
+    disk_size  = 100
+    ip_address = "192.168.2.120/24"
+    gateway    = "192.168.2.1"
+    node_name  = "pve1"
+    tags       = ["photos", "docker"]
+  }
+  
+  "jellyfin" = {
+    vmid            = 110
+    cores           = 4
+    memory          = 8192
+    disk_size       = 50
+    ip_address      = "192.168.1.110/24"
+    gateway         = "192.168.2.1"
+    node_name       = "pve1"
+    gpu_passthrough = true
+    gpu_device_id   = "0000:01:00.0"
+    tags            = ["media", "docker"]
+  }
+  
+}

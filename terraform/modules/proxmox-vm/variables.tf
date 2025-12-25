@@ -60,7 +60,7 @@ variable "datastore_id" {
 }
 
 variable "template_id" {
-  description = "Template VM ID"
+  description = "Template VM ID to clone from"
   type        = number
   default     = 9000
 }

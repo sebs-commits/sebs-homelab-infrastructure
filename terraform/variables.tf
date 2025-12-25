@@ -21,6 +21,9 @@ variable "vms" {
     node_name  = optional(string, "pve1")
     tags       = optional(list(string), [])
     
+    # Template identifier for VM cloning
+    template_id = optional(string, "local-lvm:vm-9000-disk-0")
+    
     # this is for optional GPU passthrough (mainly for my jellyfin server)
     gpu_passthrough = optional(bool, false)
     gpu_device_id   = optional(string)

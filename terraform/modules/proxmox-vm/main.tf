@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    proxmox = {
+      source  = "bpg/proxmox"
+    }
+  }
+}
+
 resource "proxmox_virtual_environment_vm" "this" {
   node_name = var.node_name
   vm_id     = var.vmid
@@ -8,24 +16,29 @@ resource "proxmox_virtual_environment_vm" "this" {
   
   cpu {
     cores = var.cores
+    type  = "host"
   }
   
   memory {
     dedicated = var.memory
   }
   
+  clone {
+    vm_id = var.template_id
+  }
+  
   disk {
     datastore_id = var.datastore_id
-    file_id      = var.template_id
     interface    = "scsi0"
     size         = var.disk_size
+    discard      = "on"
   }
   
   network_device {
     bridge = var.network_bridge
+    model  = "virtio"
   }
   
-  # Cloud-init config
   initialization {
     datastore_id = var.cloudinit_datastore_id
     
@@ -62,13 +75,3 @@ resource "proxmox_virtual_environment_vm" "this" {
   started = true
 }
 
-resource "proxmox_virtual_environment_vm_ip_addresses" "this" {
-  vm_id = proxmox_virtual_environment_vm.this.vm_id
-  node_name = var.node_name
-  
-  depends_on = [proxmox_virtual_environment_vm.this]
-}
-
-output "ipv4_addresses" {
-  value = proxmox_virtual_environment_vm_ip_addresses.this.ipv4_addresses
-}
