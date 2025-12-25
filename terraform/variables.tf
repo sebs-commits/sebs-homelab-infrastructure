@@ -12,6 +12,7 @@ variable "proxmox_api_token" {
 variable "vms" {
   description = "Map of VMs to create"
   type = map(object({
+    vm_name    = string
     vmid       = number
     cores      = number
     memory     = number

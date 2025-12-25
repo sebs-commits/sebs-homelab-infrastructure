@@ -7,6 +7,7 @@ default_password = "ultrasecurepasswordgoeshere123"
 
 vms = {
   "immich" = {
+    vm_name    = "immich-vm"
     vmid       = 120
     cores      = 4
     memory     = 8192
@@ -18,6 +19,7 @@ vms = {
   }
   
   "jellyfin" = {
+    vm_name         = "jellyfin-vm"
     vmid            = 110
     cores           = 4
     memory          = 8192

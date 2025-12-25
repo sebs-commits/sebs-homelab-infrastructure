@@ -1,3 +1,8 @@
+variable "vm_name" {
+  description = "VM display name in Proxmox"
+  type        = string
+}
+
 variable "node_name" {
   description = "Proxmox node name"
   type        = string

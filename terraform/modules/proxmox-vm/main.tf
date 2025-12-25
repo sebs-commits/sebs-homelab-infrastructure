@@ -9,6 +9,7 @@ terraform {
 resource "proxmox_virtual_environment_vm" "this" {
   node_name = var.node_name
   vm_id     = var.vmid
+  name      = var.vm_name
   
   agent {
     enabled = true

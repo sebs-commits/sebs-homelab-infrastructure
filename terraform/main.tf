@@ -15,6 +15,7 @@ module "vms" {
   
   source = "./modules/proxmox-vm"
   
+  vm_name    = each.value.vm_name
   node_name  = each.value.node_name
   vmid       = each.value.vmid
   cores      = each.value.cores
